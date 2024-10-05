@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Resultados</h1>
+    <p>Objetivo: {{ objetivo }} USDT</p>
+    <p>Monto Inicial: {{ monto_inicial }} USDT</p>
+    <p>Ganancias Totales por Semana: {{ ganancias_totales }} USDT</p>
+    <p>Semanas Necesarias para alcanzar el objetivo: {{ semanas_necesarias }} semanas</p>
+
+    <h2>Ganancias Diarias por Moneda:</h2>
+    <ul>
+        {% for moneda, ganancia in ganancias_por_moneda.items() %}
+            <li>{{ moneda }}: {{ ganancia }} USDT</li>
+        {% endfor %}
+    </ul>
+
+    <form action="/invertir" method="POST">
+        <label for="invertir">¿Desea invertir ahora lo recomendado? (si/no):</label>
+        <input type="text" id="invertir" name="invertir" required>
+        <input type="submit" value="Continuar">
+    </form>
+</body>
+</html>

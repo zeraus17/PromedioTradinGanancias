@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecciona tu Exchange</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>¿Cuál es el exchange qué utilizas?</h1>
+    <form method="POST">
+        <select name="exchange" required>
+            {% for exchange, url in exchanges.items() %}
+                <option value="{{ exchange }}">{{ exchange }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Ir al Exchange">
+    </form>
+</body>
+</html>
